@@ -13,6 +13,11 @@ public final class Candlestick {
 	
 	public Candlestick(double abertura, double fechamento, double maximo, double minimo, double volume,
 			LocalDateTime data) {
+		
+		if(maximo < minimo){
+			throw new IllegalArgumentException("O maximo não deve ser menor que o minimo!");
+		}
+		
 		this.abertura = abertura;
 		this.fechamento = fechamento;
 		this.maximo = maximo;

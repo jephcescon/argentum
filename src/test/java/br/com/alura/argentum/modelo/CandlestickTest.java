@@ -19,5 +19,19 @@ public class CandlestickTest {
 			.comData(LocalDateTime.now())
 			.geraCandle();
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void maximoNaoDeveSerMenorQueMinimo(){
+		CandleBuilder builder = new CandleBuilder();
+				
+				Candlestick candle = builder
+									.comAbertura(10.0)
+									.comFechamento(30.0)
+									.comMinimo(25.0)
+									.comMaximo(15.0)				
+									.comVolume(200.0)
+									.comData(LocalDateTime.now())
+									.geraCandle();
+	}
 
 }
