@@ -30,5 +30,24 @@ public class TestaCandlestickFactoryTest {
 		Assert.assertEquals(20.0, candle.getFechamento(), 0.00001);
 		Assert.assertEquals(14000.0, candle.getVolume(), 0.00001);
 	}
+	
+	@Test
+	public void geraCandlestickComApenasUmaNegociacao(){
+		LocalDateTime data = LocalDateTime.now();
+		
+		Negociacao negociacao1 = new Negociacao(40.0, 100, data);
+		
+		List<Negociacao> negociacoes = Arrays.asList(negociacao1);
+		
+		CandlestickFactory fabrica = new CandlestickFactory();
+		
+		Candlestick candle = fabrica.geraClandleParaData(negociacoes, data);
+		
+		Assert.assertEquals(40.0, candle.getMinimo(), 0.00001);
+		Assert.assertEquals(40.0, candle.getMaximo(), 0.00001);
+		Assert.assertEquals(40.0, candle.getAbertura(), 0.00001);
+		Assert.assertEquals(40.0, candle.getFechamento(), 0.00001);
+		Assert.assertEquals(4000.0, candle.getVolume(), 0.00001);
+	}
 
 }
