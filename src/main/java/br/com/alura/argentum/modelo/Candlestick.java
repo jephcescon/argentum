@@ -45,7 +45,7 @@ public final class Candlestick {
 		return data;
 	}
 	public boolean isAlta(){
-		return this.fechamento > this.abertura;
+		return this.fechamento >= this.abertura;
 	}
 	public boolean isBaixa(){
 		return this.fechamento < this.abertura;
