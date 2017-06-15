@@ -10,7 +10,12 @@ import br.com.alura.argentum.ws.ClientWebservice;
 @ManagedBean
 public class ArgentumBean {
 	
+	private List<Negociacao> negociacoes;
+	
+	public ArgentumBean(){
+		this.negociacoes = new ClientWebservice().getNegociacoes();
+	}
 	public List<Negociacao> getNegociacoes(){
-		return new ClientWebservice().getNegociacoes();
+		return this.negociacoes; 
 	}
 }
