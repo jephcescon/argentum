@@ -23,8 +23,10 @@ public class ArgentumBean implements Serializable {
 		this.negociacoes = new ClientWebservice().getNegociacoes();
 		this.modeloGrafico = new LineChartModel();
 		this.modeloGrafico.setTitle("Meu primeiro Grafico");
+		this.modeloGrafico.setLegendPosition("w");
 		
 		LineChartSeries linha = new LineChartSeries();
+		linha.setLabel("Valores");
 		linha.set(1, 10.5);
 		linha.set(2, 13.0);
 		linha.set(3, 12.0);
