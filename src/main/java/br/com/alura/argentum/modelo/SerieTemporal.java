@@ -4,13 +4,13 @@ import java.util.List;
 
 public class SerieTemporal {
 	
-	private List<Candlestick> candles;
+	private List<Candle> candles;
 	
-	public SerieTemporal(List<Candlestick> Candles){
+	public SerieTemporal(List<Candle> Candles){
 		this.candles = Candles;
 	}
 	
-	public Candlestick getCandles(int posicao){
+	public Candle getCandles(int posicao){
 		return this.candles.get(posicao);
 	}
 	

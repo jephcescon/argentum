@@ -2,7 +2,7 @@ package br.com.alura.argentum.modelo;
 
 import java.time.LocalDateTime;
 
-public final class Candlestick {
+public final class Candle {
 	private final double abertura;
 	private final double fechamento;
 	private final double maximo;
@@ -11,7 +11,7 @@ public final class Candlestick {
 	private final LocalDateTime data;
 	
 	
-	public Candlestick(double abertura, double fechamento, double maximo, double minimo, double volume,
+	public Candle(double abertura, double fechamento, double maximo, double minimo, double volume,
 			LocalDateTime data) {
 		
 		if(maximo < minimo){

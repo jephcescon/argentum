@@ -5,11 +5,11 @@ import java.time.LocalDateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CandlestickTest {
+public class CandleTest {
 
 	@Test
 	public void test() {
-		new Candlestick(10.0, 10.0, 10.0, 10.0, 100.0, LocalDateTime.now());
+		new Candle(10.0, 10.0, 10.0, 10.0, 100.0, LocalDateTime.now());
 		
 		new CandleBuilder()
 			.comAbertura(10.0)
@@ -25,7 +25,7 @@ public class CandlestickTest {
 	public void maximoNaoDeveSerMenorQueMinimo(){
 		CandleBuilder builder = new CandleBuilder();
 				
-				Candlestick candle = builder
+				Candle candle = builder
 									.comAbertura(10.0)
 									.comFechamento(30.0)
 									.comMinimo(25.0)
@@ -39,7 +39,7 @@ public class CandlestickTest {
 	public void ehAltaSeFechamentoForIgualAbertura(){
 		CandleBuilder builder = new CandleBuilder();
 		
-		Candlestick candle = builder
+		Candle candle = builder
 							.comAbertura(30.0).comFechamento(30.0)
 							.comMinimo(25.0).comMaximo(50.0)				
 							.comVolume(200.0)

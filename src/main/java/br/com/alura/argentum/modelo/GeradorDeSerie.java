@@ -7,10 +7,10 @@ import java.util.List;
 public class GeradorDeSerie {
 
 	public static SerieTemporal criaSerie(double... valores){
-		List<Candlestick> candles = new ArrayList<>();
+		List<Candle> candles = new ArrayList<>();
 		
 		for (double d : valores) {
-			candles.add(new Candlestick(d, d, d, d, 1000, LocalDateTime.now()));
+			candles.add(new Candle(d, d, d, d, 1000, LocalDateTime.now()));
 		}
 		return new SerieTemporal(candles);
 	}
