@@ -1,14 +1,17 @@
 package br.com.alura.argentum.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.alura.argentum.modelo.Negociacao;
 import br.com.alura.argentum.ws.ClientWebservice;
 
+@ViewScoped
 @ManagedBean
-public class ArgentumBean {
+public class ArgentumBean implements Serializable {
 	
 	private List<Negociacao> negociacoes;
 	
