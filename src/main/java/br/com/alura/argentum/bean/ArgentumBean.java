@@ -7,9 +7,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import org.primefaces.model.chart.LineChartModel;
-import org.primefaces.model.chart.LineChartSeries;
 
+import br.com.alura.argentum.graficos.GeradorDeModeloGrafico;
+import br.com.alura.argentum.modelo.Candle;
+import br.com.alura.argentum.modelo.CandleFactory;
 import br.com.alura.argentum.modelo.Negociacao;
+import br.com.alura.argentum.modelo.SerieTemporal;
 import br.com.alura.argentum.ws.ClientWebservice;
 
 @ViewScoped
@@ -21,17 +24,12 @@ public class ArgentumBean implements Serializable {
 	
 	public ArgentumBean(){
 		this.negociacoes = new ClientWebservice().getNegociacoes();
-		this.modeloGrafico = new LineChartModel();
-		this.modeloGrafico.setTitle("Meu primeiro Grafico");
-		this.modeloGrafico.setLegendPosition("w");
+		List<Candle> candles = new CandleFactory().constroiCandles(negociacoes);
+		SerieTemporal serie = new SerieTemporal(candles);
 		
-		LineChartSeries linha = new LineChartSeries();
-		linha.setLabel("Valores");
-		linha.set(1, 10.5);
-		linha.set(2, 13.0);
-		linha.set(3, 12.0);
-		
-		this.modeloGrafico.addSeries(linha);
+		GeradorDeModeloGrafico geradorModelo = new GeradorDeModeloGrafico(serie, 2, serie.getUltimaPosicao());
+		geradorModelo.planMediaMovelSimples();
+		this.modeloGrafico = geradorModelo.getModeloGrafico();
 	}
 	
 	public List<Negociacao> getNegociacoes(){
