@@ -2,8 +2,9 @@ package br.com.alura.argentum.indicadores;
 
 import br.com.alura.argentum.modelo.SerieTemporal;
 
-public class MediaMovelSimples {
+public class MediaMovelSimples implements Indicador {
 
+	@Override
 	public double calcula(int posicao, SerieTemporal serie){
 		
 		double soma = 0;
@@ -13,5 +14,10 @@ public class MediaMovelSimples {
 		}
 		
 		return soma/3;
+	}
+	
+	@Override
+	public String toString() {
+		return "MMS - Fechamento";
 	}
 }

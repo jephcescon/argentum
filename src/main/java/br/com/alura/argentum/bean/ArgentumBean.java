@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 import org.primefaces.model.chart.LineChartModel;
 
 import br.com.alura.argentum.graficos.GeradorDeModeloGrafico;
+import br.com.alura.argentum.indicadores.IndicadorFechamento;
 import br.com.alura.argentum.modelo.Candle;
 import br.com.alura.argentum.modelo.CandleFactory;
 import br.com.alura.argentum.modelo.Negociacao;
@@ -28,7 +29,7 @@ public class ArgentumBean implements Serializable {
 		SerieTemporal serie = new SerieTemporal(candles);
 		
 		GeradorDeModeloGrafico geradorModelo = new GeradorDeModeloGrafico(serie, 2, serie.getUltimaPosicao());
-		geradorModelo.planMediaMovelSimples();
+		geradorModelo.plotaIndicador(new IndicadorFechamento());
 		this.modeloGrafico = geradorModelo.getModeloGrafico();
 	}
 	
