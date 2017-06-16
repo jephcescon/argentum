@@ -4,6 +4,16 @@ import br.com.alura.argentum.modelo.SerieTemporal;
 
 public class MediaMovelPonderada implements Indicador {
 	
+	private Indicador outroIndicar = new IndicadorFechamento();
+	
+	public MediaMovelPonderada() {
+	
+	}
+	
+	public MediaMovelPonderada(Indicador outroIndicar) {
+		this.outroIndicar = outroIndicar;
+	}
+	
 	@Override
 	public double calcula(int posicao, SerieTemporal serie){
 		
@@ -11,7 +21,7 @@ public class MediaMovelPonderada implements Indicador {
 		double peso = 3;
 		
 		for (int i = posicao; i > posicao - 3; i--) {
-			soma += serie.getCandles(i).getFechamento() * peso;
+			soma += outroIndicar.calcula(i, serie) * peso;
 			peso--;
 		}
 		return soma / 6;
@@ -19,6 +29,6 @@ public class MediaMovelPonderada implements Indicador {
 	
 	@Override
 	public String toString() {
-		return "MMP - Fechamento";
+		return "MMP de " + outroIndicar.toString();
 	}
 }
